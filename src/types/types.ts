@@ -1,7 +1,11 @@
 export interface IUser {
 	id: string
 	email: string
-    token: string
+	name: string
+	role: string
+	isActive: boolean
+	createdAt: string
+	updatedAt: string
 }
 
 export interface IUserData {
@@ -22,11 +26,24 @@ export interface IResponseUserData {
 	user: IResponseUser
 }
 
+export interface IUserState {
+	isAuth: boolean
+	token: string | null
+	user: IUser | null
+}
+
+// Nueva interfaz para la respuesta del login
+export interface IAuthResponse {
+	email: string
+	role: string
+	token: string
+}
+
 export interface ICategory {
 	id: number
 	title: string
 	createdAt: string
-	updatedAt: string	
+	updatedAt: string
 	transactions?: []
 }
 

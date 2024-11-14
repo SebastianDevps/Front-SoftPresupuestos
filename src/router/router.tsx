@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, redirect } from 'react-router-dom'
 import Layout from '../pages/Layout'
 import ErrorPage from '../pages/ErrorPage'
 import Home from '../pages/Home'
@@ -8,6 +8,17 @@ import { categoriesActions, categoriesLoader } from '../helpers/category.helper'
 import Auth from '../pages/Auth'
 import ProtectedRoute from '../components/ProtectedRoute'
 import { transactionAction, transactionLoader } from '../helpers/transaction.helper'
+import { toast } from 'react-toastify'
+import { getTokenFromLocalStorage } from '../helpers/localstorage.helper'
+import Users from '../pages/Users'
+
+const authLoader = async () => {
+	const isAuth = getTokenFromLocalStorage()
+	if (!isAuth) {
+		toast.error('Debes estar autenticado para acceder')
+	}
+	return null
+}
 
 export const router = createBrowserRouter([
 	{
@@ -22,7 +33,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'transactions',
 				action: transactionAction,
-				loader: transactionLoader,
+				loader: async () => {
+					await authLoader()
+					return transactionLoader()
+				},
 				element: (
 					<ProtectedRoute>
 						<Transactions />
@@ -32,10 +46,21 @@ export const router = createBrowserRouter([
 			{
 				path: 'categories',	
 				action: categoriesActions,
-				loader: categoriesLoader,
+				loader: async () => {
+					await authLoader()
+					return categoriesLoader()
+				},
 				element: (
 					<ProtectedRoute>
 						<Categories />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: 'users',
+				element: (
+					<ProtectedRoute>
+						<Users />
 					</ProtectedRoute>
 				),
 			},

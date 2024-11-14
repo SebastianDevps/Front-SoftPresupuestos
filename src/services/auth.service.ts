@@ -1,5 +1,13 @@
 import { instance } from '../api/axios.api'
-import { IUserData, IResponseUserData, IUser } from '../types/types'
+import {
+	IUserData,
+	IResponseUserData,
+	IUser,
+	IAuthResponse,
+} from '../types/types'
+import { login as loginAction } from '../store/user/userSlice'
+import { AppDispatch } from '../store/store'
+import { setTokenToLocalStorage } from '../helpers/localstorage.helper'
 
 export const AuthService = {
 	async registration(
@@ -11,12 +19,38 @@ export const AuthService = {
 		)
 		return data
 	},
-	async login(userData: IUserData): Promise<IUser | undefined> {
-		const { data } = await instance.post<IUser>('auth/login', userData)
-		return data
-	},
+	async login(userData: IUserData, dispatch: AppDispatch): Promise<void> {
+        try {
+            const { data } = await instance.post<IAuthResponse>('auth/login', userData)
+
+            if (!data || !data.token) {
+                throw new Error('No recibió el token')
+            }
+
+			setTokenToLocalStorage('token', data.token)	
+
+            const profileResponse = await instance.get<IUser>('auth/profile')
+
+            if (typeof dispatch !== 'function') {
+				throw new Error('Función de despacho no válida proporcionada')
+			}
+
+            dispatch(loginAction({
+                user: profileResponse.data,
+                token: data.token
+            }))
+        } catch (error) {
+            console.error('Login error:', error)
+            throw error
+        }
+    },
 	async getProfile(): Promise<IUser | undefined> {
-		const { data } = await instance.get<IUser>('auth/profile')
-		if (data) return data
+		try {
+			const { data } = await instance.get<IUser>('auth/profile')
+			return data
+		} catch (error) {
+			console.error('Get profile error:', error)
+			return undefined
+		}
 	},
 }

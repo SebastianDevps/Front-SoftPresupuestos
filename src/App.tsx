@@ -14,9 +14,9 @@ function App() {
 		try {
 			if (token) {
 				const data = await AuthService.getProfile()
-
+				console.log(data)
 				if (data) {
-					dispatch(login(data))
+					dispatch(login({ token: token, user: data }))
 				} else {
 					dispatch(logout())
 				}
