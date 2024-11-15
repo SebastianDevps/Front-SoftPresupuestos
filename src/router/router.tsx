@@ -11,6 +11,7 @@ import { transactionAction, transactionLoader } from '../helpers/transaction.hel
 import { toast } from 'react-toastify'
 import { getTokenFromLocalStorage } from '../helpers/localstorage.helper'
 import Users from '../pages/Users'
+import Historial from '../pages/Historial'
 
 const authLoader = async () => {
 	const isAuth = getTokenFromLocalStorage()
@@ -61,6 +62,14 @@ export const router = createBrowserRouter([
 				element: (
 					<ProtectedRoute>
 						<Users />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: 'history',
+				element: (
+					<ProtectedRoute>
+						<Historial />
 					</ProtectedRoute>
 				),
 			},

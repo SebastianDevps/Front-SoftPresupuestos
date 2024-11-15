@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { FaTrash } from 'react-icons/fa'
+import { FaPlus, FaTrash } from 'react-icons/fa'
 import { Form, useLoaderData } from 'react-router-dom'
 import { IResponseTransactionLoader, ITransaction } from '../types/types'
 import { formatDate } from '../helpers/date.helper'
@@ -37,7 +37,14 @@ const TransactionTable: FC<ITransactionTable> = ({ limit = 3 }) => {
 
 	return (
 		<>
-			<div className="mt-4 rounded-md bg-slate-800 px-4 py-3">
+			<div className="flex flex-col gap-4 rounded-md bg-slate-800 px-4 py-3">
+				<div className="flex flex-row items-center justify-between">
+					<h1 className="text-[16px]  font-bold capitalize">
+						Listado de transacciones
+					</h1>
+					
+				</div>
+				<div className="border-t mb-2 border-slate-700/50"></div>
 				<table className="w-full">
 					<thead>
 						<tr>

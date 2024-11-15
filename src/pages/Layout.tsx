@@ -6,7 +6,7 @@ const Layout: FC = () => {
 	return (
 		<div className="min-h-screen bg-slate-900 text-white font-roboto">
 			<Header />
-			<div className="w-full">
+			<div className="w-full p-4">
 				<Outlet />
 			</div>
 			{/* <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">

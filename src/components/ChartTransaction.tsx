@@ -25,7 +25,7 @@ const ChartTransaction: FC<IChartTransaction> = ({
 	)
 
 	return (
-		<PieChart width={240} height={240}>
+		<PieChart width={240} height={200}>
 			<Pie
 				data={data}
 				cx={'50%'}

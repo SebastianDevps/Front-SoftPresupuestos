@@ -2,7 +2,6 @@ import { FC, useRef, useState } from 'react'
 import { useClickAway } from 'react-use'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FaBtc, FaKey, FaCog, FaSignOutAlt, FaUser } from 'react-icons/fa'
-import { useAuth } from '../hooks/useAuth'
 import { useAppDispatch } from '../store/hooks'
 import { logout } from '../store/user/userSlice'
 import { removeTokenFromLocalStorage } from '../helpers/localstorage.helper'
@@ -33,7 +32,7 @@ const Header: FC = () => {
 		<header className="flex items-center bg-slate-800/95 px-6 py-4 shadow-lg backdrop-blur-sm sticky top-0 z-50">
 			<Link to="/">
 				<div className="flex items-center gap-2 hover:opacity-75 transition-opacity">
-					<FaBtc size={28} className="text-yellow-500" />
+					<FaBtc size={28} />
 					<h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
 						FinanzApp
 					</h1>
@@ -190,7 +189,7 @@ const Header: FC = () => {
 							<span>Ajustes</span>
 						</button>
 						<div className="px-4 py-2">
-							<div className="flex items-center justify-between">
+							<div className="flex items-center gap-1">
 								<div className="flex items-center gap-2">
 									<div className="relative">
 										<div
@@ -210,7 +209,7 @@ const Header: FC = () => {
 										</div>
 									</div>
 									<span className="text-sm font-medium text-gray-400">
-										Estado
+										Estado:
 									</span>
 								</div>
 								<span

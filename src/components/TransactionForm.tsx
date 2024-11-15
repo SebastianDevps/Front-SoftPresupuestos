@@ -1,15 +1,22 @@
-import { FC, useState } from 'react'
-import { FaPlus } from 'react-icons/fa'
+import { FC } from 'react'
 import { Form, useLoaderData } from 'react-router-dom'
 import { IResponseTransactionLoader } from '../types/types'
-import CategoryModal from './CategoryModal'
 
-const TransactionForm: FC = () => {
+interface TransactionFormProps {
+    type: 'post' | 'patch'
+    id?: number
+	setVisibleModal: (visible: boolean) => void
+}
+
+const TransactionForm: FC<TransactionFormProps> = ({ type, id, setVisibleModal }) => {
 	const { categories } = useLoaderData() as IResponseTransactionLoader
-	const [visibleModal, setVisibleModal] = useState(false)
 	return (
-		<div className="rounded-md bg-slate-800 p-4">
-			<Form method="post" className="grid gap-2">
+		<div className="fixed bottom-0 left-0 right-0 top-0 flex h-full items-center justify-center bg-black/50">
+
+			<Form method={type} className="grid gap-2 w-[300px]  bg-slate-800 p-4 rounded-md" onSubmit={() => setVisibleModal(false)}>
+				<h1 className="text-xl font-bold text-center">
+					{type === 'post' ? 'Nueva transacción' : 'Editar transacción'}
+				</h1>
 				<label className="grid" htmlFor="title">
 					<span>Título</span>
 					<input
@@ -56,14 +63,6 @@ const TransactionForm: FC = () => {
 					</h1>
 				)}
 
-				{/* Add category */}
-				<button
-					onClick={() => setVisibleModal(true)}
-					className="mt-5 flex max-w-fit items-center gap-2 text-white/50 hover:text-white"
-				>
-					<FaPlus />
-					<span>Gestionar categorías</span>
-				</button>
 
 				{/* Radio buttons */}
 				<div className="flex items-center gap-4">
@@ -87,15 +86,16 @@ const TransactionForm: FC = () => {
 					</label>
 				</div>
 
+				<div className="flex items-center gap-2">
 				<button type="submit" className="btn btn-green mt-4 max-w-fit">
 					Agregar transacción
-				</button>
+					</button>
+					<button type="button" className="btn btn-red mt-4 max-w-fit" onClick={() => setVisibleModal(false)}>
+						Cerrar
+					</button>
+				</div>
 			</Form>
 
-			{/* Add category*/}
-			{visibleModal && (
-				<CategoryModal type="post" setVisibleModal={setVisibleModal} />
-			)}
 		</div>
 	)
 }
