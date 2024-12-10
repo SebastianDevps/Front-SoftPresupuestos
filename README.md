@@ -1,8 +1,17 @@
 # React + TypeScript + Vite
-
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
+
+
+## 🚀 Preview
+<div align="center">
+  <video width="100%" controls autoplay loop muted>
+    <source src="https://www.webmobilefirst.com/en/screencasts/zsatxqwx0h2au0/" type="video/mp4">
+    Tu navegador no soporta el elemento de video.
+  </video>
+</div>
+
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
@@ -48,3 +57,4 @@ export default tseslint.config({
   },
 })
 ```
+
