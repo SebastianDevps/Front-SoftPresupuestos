@@ -5,8 +5,7 @@ Currently, two official plugins are available:
 
 
 ## 🚀 Preview
-Puedes ver el video aquí:
-bash `https://via.placeholder.com/800x450.png?text=Click+to+Play)](https://www.webmobilefirst.com/en/screencasts/zsatxqwx0h2au0/`
+Puedes ver el video aquí: https://via.placeholder.com/800x450.png?text=Click+to+Play)](https://www.webmobilefirst.com/en/screencasts/zsatxqwx0h2au0/
 
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
