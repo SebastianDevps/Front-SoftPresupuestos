@@ -6,14 +6,7 @@ Currently, two official plugins are available:
 
 ## 🚀 Preview
 Puedes ver el video aquí:
-[![Preview Video](https://via.placeholder.com/800x450.png?text=Click+to+Play)](https://www.webmobilefirst.com/en/screencasts/zsatxqwx0h2au0/)
-
-<div align="center">
-  <video width="100%" controls autoplay loop muted>
-    <source src="https://www.webmobilefirst.com/en/screencasts/zsatxqwx0h2au0/" type="video/mp4">
-    Tu navegador no soporta el elemento de video.
-  </video>
-</div>
+bash `https://via.placeholder.com/800x450.png?text=Click+to+Play)](https://www.webmobilefirst.com/en/screencasts/zsatxqwx0h2au0/`
 
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
