@@ -5,6 +5,9 @@ Currently, two official plugins are available:
 
 
 ## 🚀 Preview
+Puedes ver el video aquí:
+[![Preview Video](https://via.placeholder.com/800x450.png?text=Click+to+Play)](https://www.webmobilefirst.com/en/screencasts/zsatxqwx0h2au0/)
+
 <div align="center">
   <video width="100%" controls autoplay loop muted>
     <source src="https://www.webmobilefirst.com/en/screencasts/zsatxqwx0h2au0/" type="video/mp4">
